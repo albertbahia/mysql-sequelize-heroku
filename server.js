@@ -14,7 +14,7 @@ app.set('view engine', 'handlebars');
 var PORT = process.env.PORT || 8000;
 
 app.get('/', function(request, response) {
-  response.render('home');
+  response.render('home', {yerp: 'Hello World2!'});
 });
 
 app.listen(PORT, function(err) {
