@@ -2,6 +2,7 @@ var express = require('express');
 var mysql = require('mysql');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
+// var envs = require('dotenv').config({silent: false});
 
 // Initiate Express app
 var app = express();
@@ -10,12 +11,17 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Database setup
-var Sequelize = require('sequelize');
-var connection = new Sequelize('todo_db', 'root', 'hacktheplanet', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: '3306'
-});
+var Sequelize = require('sequelize'),
+    connection;
+if (process.env.JAWSDB_URL) {
+  connection = new Sequelize(process.env.JAWSDB_URL);
+} else {
+  connection = new Sequelize('todo_db', 'root', 'hacktheplanet', {
+    host: 'localhost',
+    dialect: 'mysql',
+    port: '3306'
+  })
+}
 
 var Todo = connection.define('todo', {
   description: {
