@@ -2,7 +2,6 @@ var express = require('express');
 var mysql = require('mysql');
 var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
-// var envs = require('dotenv').config({silent: false});
 
 // Initiate Express app
 var app = express();
