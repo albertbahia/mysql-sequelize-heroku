@@ -22,6 +22,7 @@ if (process.env.JAWSDB_URL) {
   })
 }
 
+// Create the model and define the schema using Sequelize
 var Todo = connection.define('todo', {
   description: {
     type: Sequelize.STRING,
